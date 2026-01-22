@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Simple Todo App</title>
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f4f4f4;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .todo-box {
+      background: white;
+      padding: 20px;
+      width: 300px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+
+    h2 {
+      text-align: center;
+    }
+
+    input {
+      width: 100%;
+      padding: 8px;
+      margin-bottom: 10px;
+    }
+
+    button {
+      width: 100%;
+      padding: 8px;
+      background: teal;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+
+    ul {
+      list-style: none;
+      padding: 0;
+      margin-top: 15px;
+    }
+
+    li {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 8px;
+      background: #eee;
+      padding: 6px;
+      border-radius: 5px;
+    }
+
+    .delete {
+      color: rgb(25, 149, 3);
+      cursor: pointer;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="todo-box">
+    <h2>Todo App</h2>
+
+    <input type="text" id="todoInput" placeholder="Enter a task">
+    <button onclick="addTodo()">Add Todo</button>
+
+    <ul id="todoList"></ul>
+  </div>
+
+<script>
+  // 📦 STORE TODOS
+  let todos = [];
+
+  // ➕ ADD TODO
+  function addTodo() {
+    let input = document.getElementById("todoInput");
+    let task = input.value.trim();
+
+    if (task === "") {
+      alert("Todo cannot be empty");
+      return;
+    }
+
+    let todo = {
+      id: Date.now(),
+      title: task
+    };
+
+    todos.push(todo);
+    input.value = "";
+    displayTodos();
+  }
+
+  // ❌ REMOVE TODO
+  function removeTodo(id) {
+    todos = todos.filter(todo => todo.id !== id);
+    displayTodos();
+  }
+
+  // 📄 DISPLAY TODOS
+  function displayTodos() {
+    let list = document.getElementById("todoList");
+    list.innerHTML = "";
+
+    todos.forEach(todo => {
+      let li = document.createElement("li");
+      li.innerHTML = `
+        ${todo.title}
+        <span class="delete" onclick="removeTodo(${todo.id})">X</span>
+      `;
+      list.appendChild(li);
+    });
+  }
+</script>
+
+</body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    let student = {
+  name: "Rana",
+  age: 21,
+  course: "Full Stack",
+
+  introduce: function () {
+    console.log("My place is " + this.city);
+  }
+};
+student.city = "Kannur";
+student.grade = "A";
+
+student.introduce();
+
+student.study = function () {
+  console.log(this.name + " is studying " + this.course);
+};
+student.study();
+
+  </script>
+</body>
+</html>

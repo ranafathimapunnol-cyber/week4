@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Method Chaining</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+
+  <body>
+    
+    <div class="min-h-screen bg-gradient-to-b from-indigo-100 via-pink-100 to-yellow-100 p-8 text-center">
+
+      <h3 class="text-2xl font-semibold mt-40 mb-4">
+       1. Method chaining on string <div class="text-red-600 text-xl">(console!)</div> 
+      </h3>
+
+      <script>
+        let text = '  hello world  ';
+        let result = text.trim().toUpperCase().slice(0, 5);
+        console.log(result);
+      </script>
+
+      <h3 class="text-2xl font-semibold mt-8 mb-4">
+       2. Method chaining on array <div class="text-red-600 text-xl">(console!)</div> 
+      </h3>
+
+      <script>
+        let marks = [35, 78, 90, 22, 65];
+        let results = marks
+          .filter(m => m >= 40)
+          .map(m => m + 5)
+          .sort((a, b) => a - b);
+
+        console.log(results);
+      </script>
+
+      <h3 class="text-2xl font-semibold mt-8 mb-4">
+       3. Method chaining on object <div class="text-red-600 text-xl">(console!)</div> 
+      </h3>
+
+      <script>
+        let students = [
+          { name: "Asha", marks: 78 },
+          { name: "Ravi", marks: 45 },
+          { name: "Neha", marks: 90 }
+        ];
+
+        let toppers = students
+          .filter(s => s.marks >= 50)
+          .sort((a, b) => b.marks - a.marks)
+          .map(s => s.name);
+
+        console.log(toppers);
+      </script>
+
+    </div>
+  </body>
+</html>

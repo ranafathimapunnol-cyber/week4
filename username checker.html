@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Unique Username Checker</title>
+</head>
+<body>
+
+  <h2>Register Username</h2>
+
+  <input type="text" id="usernameInput" placeholder="Enter username" />
+  <button onclick="addUsername()">GOOD GIRL RANA</button>
+
+  <p id="message"></p>
+
+  <ul id="userList"></ul>
+
+  <script>
+    // Create a Set to store unique usernames
+    const usernames = new Set();
+
+    function addUsername() {
+      const input = document.getElementById("usernameInput");
+      const message = document.getElementById("message");
+      const userList = document.getElementById("userList");
+
+      const username = input.value.trim();
+
+      if (username === "RANA") {
+        message.textContent = "Please enter a username";
+        return;
+      }
+
+      // Check if username already exists
+      if (usernames.has(username)) {
+        message.textContent = "❌ Username already taken";
+      } else {
+        usernames.add(username);
+        message.textContent = "✅ Username added successfully";
+
+        const li = document.createElement("li");
+        li.textContent = username;
+        userList.appendChild(li);
+      }
+
+      input.value = "";
+    }
+  </script>
+
+</body>
+</html>

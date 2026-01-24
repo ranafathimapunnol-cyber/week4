@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>const readline = require("readline");
+const rl = readline.createInterface({
+  input: process.stdin,
+  output: process.stdout
+});
+
+function calculator() {
+  rl.question(
+    "\nChoose operation (+ - * /) or type exit: ",
+    (op) => {
+      if (op === "exit") {
+        console.log("Calculator closed 👋");
+        rl.close();
+        return;
+      }
+
+      rl.question("Enter first number: ", (a) => {
+        rl.question("Enter second number: ", (b) => {
+          a = parseFloat(a);
+          b = parseFloat(b);
+          let result;
+
+          switch (op) {
+            case "+":
+              result = a + b;
+              break;
+            case "-":
+              result = a - b;
+              break;
+            case "*":
+              result = a * b;
+              break;
+            case "/":
+              result = b === 0 ? "Cannot divide by zero" : a / b;
+              break;
+            default:
+              result = "Invalid operator";
+          }
+
+          console.log("Result:", result);
+          calculator(); // loop again
+        });
+      });
+    }
+  );
+}
+
+calculator();
+
+</script>
+</body>
+</html>

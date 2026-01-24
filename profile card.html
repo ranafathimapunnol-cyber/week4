@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+
+const profile = {
+  name: "Rana Fathima",
+  age: 20,
+  skills: ["HTML", "CSS", "JavaScript", "React"],
+
+  showProfile() {
+ 
+    const { name, age, skills } = this;
+
+   
+    const [skill1, skill2] = skills;
+
+    console.log("👤 Profile Card");
+    console.log("Name:", name);
+    console.log("Age:", age);
+    console.log("Top Skills:", skill1, ",", skill2);
+    console.log("All Skills:", skills.join(" | "));
+  }
+};
+
+
+profile.showProfile();
+
+  </script>
+</body>
+</html>

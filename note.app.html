@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Simple Notes App</title>
+</head>
+<body>
+
+  <h2>My Notes</h2>
+
+  <input type="text" id="noteInput" placeholder="Write a note" />
+  <button onclick="addNote()">Add Note</button>
+
+  <ul id="notesList"></ul>
+
+  <script>
+    // Load notes when page opens
+    showNotes();
+
+    function addNote() {
+      let noteInput = document.getElementById("noteInput");
+      let noteText = noteInput.value;
+
+      if (noteText === "") return;
+
+      // Get old notes from localStorage
+      let notes = JSON.parse(localStorage.getItem("notes")) || [];
+
+      // Add new note
+      notes.push(noteText);
+
+      // Save back to localStorage
+      localStorage.setItem("notes", JSON.stringify(notes));
+
+      noteInput.value = "";
+      showNotes();
+    }
+
+    function showNotes() {
+      let notesList = document.getElementById("notesList");
+      notesList.innerHTML = "";
+
+      let notes = JSON.parse(localStorage.getItem("notes")) || [];
+
+      notes.forEach(function(note) {
+        let li = document.createElement("li");
+        li.textContent = note;
+        notesList.appendChild(li);
+      });
+    }
+  </script>
+
+</body>
+</html>
